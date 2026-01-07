@@ -1,6 +1,6 @@
 {
   "name": "Molten Coda",
-  "image": "ghcr.io/devcontainers/templates/miniconda",
+  "image": "mcr.microsoft.com/devcontainers/miniconda:3",
   
   // 1. Install Tools via Features
   "features": {
@@ -28,6 +28,8 @@
   "mounts": [
     "source=${localWorkspaceFolder}/.devcontainer/nvim,target=/home/vscode/.config/nvim,type=bind"
   ],
+
+  "updateContentCommand": "conda env update -n base -f environment.yml",
 
   // 5. User Settings
   "remoteUser": "vscode",
