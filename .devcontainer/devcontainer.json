@@ -1,0 +1,38 @@
+{
+  "name": "Molten Coda",
+  "image": "ghcr.io/devcontainers/templates/miniconda",
+  
+  // 1. Install Tools via Features
+  "features": {
+    // Basic build tools (gcc, make, etc.)
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": false,
+      "upgradePackages": true
+    },
+    // SSH Server (Critical for kitten ssh)
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    // Neovim (from community contrib to get latest stable)
+    "ghcr.io/devcontainers-extra/features/neovim-homebrew:1": {},
+    // Ripgrep
+    "ghcr.io/devcontainers-extra/features/ripgrep:1": {},
+    // FD Find
+    "ghcr.io/devcontainers-extra/features/fd:1": {},
+  },
+
+  // 2. Configure Ports (Forward SSH)
+  // We use 2222 to avoid conflict with local SSH
+  "appPort": ["2222:2222"],
+
+  // 4. Mounts
+  // Mount the nvim folder in .devcontainer to ~/.config/nvim in the container
+  "mounts": [
+    "source=${localWorkspaceFolder}/.devcontainer/nvim,target=/home/vscode/.config/nvim,type=bind"
+  ],
+
+  // 5. User Settings
+  "remoteUser": "vscode",
+  "containerEnv": {
+    // Ensure the container knows we want 256 colors/images where possible
+    "TERM": "xterm-kitty"
+  }
+}
