@@ -17,6 +17,8 @@
     "ghcr.io/devcontainers-extra/features/ripgrep:1": {},
     // FD Find
     "ghcr.io/devcontainers-extra/features/fd:1": {},
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
   },
 
   // 2. Configure Ports (Forward SSH)
@@ -29,7 +31,7 @@
     "source=${localWorkspaceFolder}/.devcontainer/nvim,target=/home/vscode/.config/nvim,type=bind"
   ],
 
-  "updateContentCommand": "conda env update -n base -f environment.yml",
+  "updateContentCommand": "sudo apt-get update && sudo apt-get install -y imagemagick && conda env update -n base -f environment.yml",
 
   // 5. User Settings
   "remoteUser": "vscode",
